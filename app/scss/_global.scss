@@ -7,7 +7,6 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   color: $default;
   background-color: #f9faff;
   font-size: 20px;
@@ -21,8 +20,13 @@ body {
   padding: 0 15px;
 }
 
+main {
+  flex-grow: 1;
+}
+
 a {
   color: $default;
   font-size: 18px;
   line-height: 1.16;
 }
+
