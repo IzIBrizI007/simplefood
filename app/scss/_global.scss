@@ -1,0 +1,28 @@
+html,
+body {
+  height: 100%;
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $default;
+  background-color: #f9faff;
+  font-size: 20px;
+  font-weight: 400;
+  @extend %rubik-400;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+a {
+  color: $default;
+  font-size: 18px;
+  line-height: 1.16;
+}
