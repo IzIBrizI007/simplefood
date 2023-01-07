@@ -4,8 +4,7 @@
 @import 'global';
 
 .header {
-  padding-bottom: 60px;
-  
+
   &__content {
     display: flex;
     justify-content: space-between;
@@ -18,10 +17,12 @@
   }
 
   &__title {
+    margin-bottom: 20px;
     @extend %rubik-500;
     color: $orange-900;
     font-size: 66px;
     text-transform: uppercase;
+    
 
     &::first-line {
       color: $darkBlue-900;
@@ -64,10 +65,6 @@
   justify-content: space-between;
   padding: 60px 0;
 
-  .logo {
-    align-self: flex-start;
-  }
-
   &__inner {
     display: flex;
     align-items: center;
@@ -93,6 +90,12 @@
     align-items: center;
   }
 
+  &__icon {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
   &__icon-link {
     display: flex;
     align-items: center;
@@ -100,13 +103,15 @@
     padding: 10px;
 
     &:hover {
+
       & path,
       ellipse {
         stroke: #fff;
       }
     }
-    
+
     &:active {
+
       & path,
       ellipse {
         stroke: #000;
@@ -127,6 +132,11 @@
     text-align: center;
     line-height: 14px;
   }
+}
+
+.logo {
+  width: 200px;
+  height: 39px;
 }
 
 .footer {
@@ -150,7 +160,7 @@
     .logo {
       margin-bottom: 30px;
     }
-  
+
   }
 
   &__title {
@@ -161,7 +171,7 @@
   }
 
   &__item {
-    &:not(:last-child){
+    &:not(:last-child) {
       margin-bottom: 20px;
     }
   }
@@ -176,11 +186,11 @@
     width: 200px;
     margin: 0 auto;
     font-size: 14px;
-    
+
   }
 }
 
-.form{
+.form {
 
   &__input {
     padding: 13px 15px;
@@ -191,6 +201,7 @@
     border: 1px solid #C2C2C2;
     border-radius: 5px;
     font-size: 14px;
+    outline: transparent;
 
     &::placeholder {
       color: $gray;
@@ -222,6 +233,7 @@
     border-radius: 5px;
 
     &:focus {
+
       & path,
       ellipse {
         fill: $orange-900;
@@ -249,88 +261,100 @@
       }
     }
   }
-    svg {
+
+  svg {
     margin-right: 15px;
   }
-} 
+}
 
 .address {
-    &__item {
-      position: relative;
-      font-style: normal;
-      padding-left: 24px;
-      &:not(:last-child) {
-        margin-bottom: 20px;
-      }
+  &__item {
+    position: relative;
+    font-style: normal;
+    padding-left: 24px;
 
-      &:last-child {
-        padding-left: 0;
-      }
-
-      &::before {
-        position: absolute;
-        content: '';
-        top: 50%;
-        left: -7px;
-        transform: translateY(-50%);
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
+    &:not(:last-child) {
+      margin-bottom: 20px;
     }
 
-    &__item-geo::before {
-      width: 15px;
-      height: 18px;
-      background-image: url('../images/icons/geo.svg');
+    &:last-child {
+      padding-left: 0;
     }
-    &__item-phone::before {
-      width: 19px;
-      height: 19px;
-      background-image: url('../images/icons/phone.svg');
-    }
-    &__item-email::before {
-      width: 20px;
-      height: 18px;
-      background-image: url('../images/icons/message.svg');
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: -7px;
+      transform: translateY(-50%);
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   }
+
+  &__item-geo::before {
+    width: 15px;
+    height: 18px;
+    background-image: url('../images/icons/geo.svg');
+  }
+
+  &__item-phone::before {
+    width: 19px;
+    height: 19px;
+    background-image: url('../images/icons/phone.svg');
+  }
+
+  &__item-email::before {
+    width: 20px;
+    height: 18px;
+    background-image: url('../images/icons/message.svg');
+  }
+}
 
 .social {
+  display: flex;
+
+  &__item {
+    margin: auto 0;
+
+    &:not(:last-child) {
+      margin-right: 20px
+    }
+  }
+
+  &__link {
     display: flex;
-    &__item {
-      margin: auto 0;
-      &:not(:last-child) {
-        margin-right: 20px
+    background-color: $silver-200;
+    padding: 10px;
+    border-radius: 50%;
+
+    &:hover {
+
+      & path,
+      ellipse {
+        fill: #fff;
       }
     }
 
-    &__link {
-      display: flex;
-      background-color: $silver-200;
-      padding: 10px;
-      border-radius: 50%;
+    &:active {
 
-      &:hover {
-        & path,
-        ellipse {
-          fill: #fff;
-        }
-      }
-        
-      &:active {
-        & path,
-        ellipse {
-          fill: #000;
-        }
+      & path,
+      ellipse {
+        fill: #000;
       }
     }
   }
+}
 
 .categories {
   text-align: center;
 
   &__title {
     margin-bottom: 60px;
+  }
+
+  &__choice { 
+    margin-bottom: 30px;
   }
 
   &__list {
@@ -348,12 +372,12 @@
   &__btn {
     display: flex;
     align-items: center;
-    padding: 22px 32px;
+    padding: 13px 33px;
     background-color: #fff;
+    color: $darkBlue-900;
     border: none;
     border-radius: 5px;
     white-space: nowrap;
-    color: $darkBlue-900;
     transition: box-shadow 0.2s, background 0.2s, color 0.2s;
 
     &:focus {
@@ -366,26 +390,28 @@
       box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
       background: rgba(255, 122, 80, 0.1);
       color: $orange-900;
-        & path,
-        ellipse {
-          fill: $orange-900;
-        }
-      }
-        
-      &:active {
-        background: rgba(255, 122, 80, 0.1);
-        box-shadow: none;
-        color: $orange-900;
-        & path,
-        ellipse {
-          fill: $orange-900;
-        }
+
+      & path,
+      ellipse {
+        fill: $orange-900;
       }
     }
 
-    & svg {
-      margin-right: 10px;
+    &:active {
+      background: rgba(255, 122, 80, 0.1);
+      box-shadow: none;
+      color: $orange-900;
+
+      & path,
+      ellipse {
+        fill: $orange-900;
+      }
     }
+  }
+
+  & svg {
+    margin-right: 10px;
+  }
 
   .mixitup-control-active {
     background-color: $orange-900;
@@ -419,7 +445,7 @@
     text-decoration-line: underline;
     color: $darkBlue-900;
     line-height: 1.5;
-    
+
     &:hover {
       text-decoration: none;
     }
@@ -433,10 +459,12 @@
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   max-width: 210px;
   width: 100%;
   min-height: 259px;
+  height: 100%;
   background-color: #fff;
   padding: 20px 0;
   border-radius: 5px;
@@ -447,31 +475,29 @@
     margin-bottom: 10px;
   }
 
-  &__text {
+  &__text { 
+    flex-grow: 1;
     max-width: 180px;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
     font-size: 15px;
     line-height: 1.2;
   }
 
   &__num {
     margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.4;
   }
 
-  &__btn  {
+  &__btn {
     padding: 7px 16px;
     background-color: $orange-900;
     border: none;
     border-radius: 6px;
     color: #fff;
+    font-size: 14px;
   }
 }
 
-
-
-
-
-
 @import 'media';
-
-
