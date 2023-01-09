@@ -1,27 +1,28 @@
 $dark: #31352B;
 $darkBlue-900: #363853;
 $orange-900: #FF6838;
+$btn-bg-opacity: #ff7a501a;
 $gray: #c2c2c2;
 $silver-200: #ececec;  
-$silver-100: #f9faff;  
+$silver-100: #f9faff;
 
 
 %rubik-400 {
-  font-family: 'Rubik-Regular', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: 400;
 }
 
 %rubik-500 {
-  font-family: 'Roboto-Medium', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: 500;
 }
 
 %rubik-italic {
-  font-family: 'Roboto-Italic', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: 400;
 }
 
 %rubik-light {
-  font-family: 'Roboto-Light', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: 300;
 }
