@@ -6,6 +6,9 @@ const uglify       = require('gulp-uglify');
 const imagemin     = require('gulp-imagemin');
 // const del          = require('del');
 const browserSync  = require('browser-sync').create();
+const svgSprite = require('gulp-svg-sprite');
+const cheerio = require('gulp-cheerio');
+const replace = require('gulp-replace');
 // import {src, dest, watch, parallel} from 'gulp';
 // import {scss} from 'gulp-sass';
 // import {concat} from 'gulp-concat';
@@ -38,8 +41,8 @@ function styles() {
 
 function scripts() {
   return src([
-    'node_modules/jquery/dist/jquery.js', 
-    'node_modules/mixitup/dist/mixitup.js',
+    'node_modules/jquery/dist/jquery.min.js', 
+    'node_modules/mixitup/dist/mixitup.min.js',
     'app/js/main.js'
   ])
   .pipe(concat('main.min.js'))
@@ -81,7 +84,31 @@ function watching() {
   watch(['app/scss/**/*.scss'], styles);
   watch(['app/js/**/*.js', '!app/js/main.min.js'], scripts);
   watch(['app/**/*.html']).on('change', browserSync.reload);
+  watch(['app/images/icons/*.svg'], svgSprites);
+}
 
+function svgSprites() {
+  return src('app/images/icons/*.svg') 
+  .pipe(cheerio({
+        run: ($) => {
+            $("[fill]").removeAttr("fill"); 
+            $("[stroke]").removeAttr("stroke"); 
+            $("[style]").removeAttr("style"); 
+        },
+        parserOptions: { xmlMode: true },
+      })
+  )
+	.pipe(replace('&gt;','>')) 
+	.pipe(
+	      svgSprite({
+	        mode: {
+	          stack: {
+	            sprite: '../sprite.svg', 
+	          },
+	        },
+	      })
+	    )
+	.pipe(dest('app/images')); 
 }
 
 exports.styles = styles;
@@ -92,5 +119,6 @@ exports.images = images;
 // exports.cleanDist = cleanDist;
 // exports.build = series(cleanDist, images, build);
 exports.build = build;
+exports.svgSprites = svgSprites;
 
-exports.default = parallel(styles,scripts,browsersync,watching);
+exports.default = parallel(styles,scripts,browsersync,watching,svgSprites);
