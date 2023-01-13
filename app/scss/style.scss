@@ -62,8 +62,7 @@
     max-width: 560px;
     width: 100%;
     min-height: 660px;
-    background-repeat: no-repeat;
-    background-size: contain;
+    @extend %img-position;
   }
 }
 
@@ -297,6 +296,90 @@
     font-size: 14px;
 
     &:hover {
+      box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+      background-color: #fff;
+      color: $orange-900;
+    }
+
+    &:active {
+      background-color: rgba(255, 122, 80, 0.1);
+      box-shadow: none;
+    }
+  }
+}
+
+.about {
+  padding: 60px 0;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 70px;
+  }
+
+  &__bg {
+    max-width: 440px;
+    width: 100%;
+    height: 585px;
+    @extend %img-position;
+  }
+
+  &__info {
+    max-width: 470px;
+  }
+
+  &__point {
+    position: relative;
+    display: block;
+    padding-left: 54px;
+    font-size: 24px;
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 34px;
+      height: 34px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+    .about__point--delivery::before {
+     background-image: url('../images/icons/about__time-icon.svg');
+    }
+
+    .about__point--courier::before {
+      background-image: url('../images/icons/about__courier-icon.svg');
+    }
+
+    .about__point--place::before {
+      background-image: url('../images/icons/about__resturent -icon.svg');
+    }
+
+  &__list {
+    margin-bottom: 30px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 30px;
+  }
+
+  &__text p{
+    margin-bottom: 30px;
+  }
+
+  &__link {
+    padding: 12px 32px;
+
+     &:hover {
       box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
       background-color: #fff;
       color: $orange-900;
