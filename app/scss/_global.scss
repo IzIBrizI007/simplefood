@@ -95,22 +95,28 @@ ellipse {
     box-shadow: 0 0 0 2px rgba($orange-900, 0.7);
     background-color: $btn-bg-opacity;
     color: $orange-900;
+
+    .icons-sprite {
+      fill: $orange-900;
+    }
   }
 
   &:hover {
-    background-color: $orange-900;
+    box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+    background-color: #fff;
+    color: $orange-900;
     
     .icons-sprite {
-      stroke: #fff;
+      fill: $orange-900;
     }
   }
 
   &:active {
-    background-color: $btn-bg-opacity;
+    background-color: rgba(255, 122, 80, 0.1);
     box-shadow: none;
 
     .icons-sprite {
-      stroke: #000;
+      fill: $orange-900;
     }
   }
 }

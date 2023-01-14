@@ -1,6 +1,7 @@
 @import 'reset';
 @import 'fonts';
 @import 'vars';
+@import 'lib';
 @import 'logo';
 @import 'global';
 
@@ -40,17 +41,6 @@
   &__btn {
     padding: 12px 32px;
     margin-right: 34px;
-
-    &:hover {
-      box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
-      background-color: #fff;
-      color: $orange-900;
-    }
-
-    &:active {
-      background: rgba(255, 122, 80, 0.1);
-      box-shadow: none;
-    }
   }
 
   &__link-info {
@@ -114,7 +104,21 @@
     height: 44px;
     background-color: $silver-100;
 
+    &:focus {
+
+      .icons-sprite {
+        fill: none;
+      }
+    }
+
     &:hover {
+      background-color: #FF7A50;
+
+      .icons-sprite {
+        fill: none;
+        stroke: #fff;
+      }
+
       .basket__num {
         background-color: #fff;
         color: $orange-900;
@@ -123,6 +127,13 @@
     }
 
     &:active {
+      background-color: #FFF2ED;
+
+      .icons-sprite {
+        fill: none;
+        stroke: #000;
+      }
+
       .basket__num {
         background-color: #fff;
         color: $orange-900;
@@ -185,15 +196,16 @@
     transition: box-shadow 0.2s, background 0.2s, color 0.2s;
 
     &:focus {
-      box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
-      background: rgba(255, 122, 80, 0.1);
+      background: #fff;
       color: $darkBlue-900;
+
+      .icons-sprite {
+        fill: #000;
+      }
     }
 
     &:hover {
-      box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
       background: rgba(255, 122, 80, 0.1);
-      color: $orange-900;
 
       .icons-sprite {
         fill: $orange-900;
@@ -202,10 +214,9 @@
     }
 
     &:active {
-      background: rgba(255, 122, 80, 0.1);
-      box-shadow: none;
-      color: $orange-900;
+      background: #fff;
       box-shadow: inset 0px -5px 12px rgba(255, 104, 56, 0.2);
+      color: $orange-900;
 
       .icons-sprite {
         fill: $orange-900;
@@ -294,17 +305,6 @@
   &__btn {
     padding: 7px 16px;
     font-size: 14px;
-
-    &:hover {
-      box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
-      background-color: #fff;
-      color: $orange-900;
-    }
-
-    &:active {
-      background-color: rgba(255, 122, 80, 0.1);
-      box-shadow: none;
-    }
   }
 }
 
@@ -378,17 +378,221 @@
 
   &__link {
     padding: 12px 32px;
+  }
+}
 
-     &:hover {
-      box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
-      background-color: #fff;
-      color: $orange-900;
+.restorans {
+  padding: 60px 0;
+  .title {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+
+  &__item {
+    max-width: 370px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+}
+
+.card-rest {
+
+  span {
+    display: inline-block;
+  }
+
+  &__img {
+    object-fit: cover;
+  }
+
+  &__info {
+    padding: 15px 20px 20px;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+
+  &__time {
+    position: relative;
+    @extend %rubik-light;
+    font-size: 18px;
+    line-height: 1.6;
+    padding-left: 32px;
+    &::before {
+      position: absolute;
+      content: '';
+      top: 3px;
+      left: 0;
+      width: 22px;
+      height:22px;
+      background-image: url('../images/icons/restorans-time.svg');
+      @extend %img-position;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 7px;
+    max-width: 79px;
+    width: 100%;
+    border-radius: 16px;
+
+    .icons-sprite {
+      fill: #fff;
+      stroke: none;
+      transition: transform 0.5s;
+    }
+
+    &:hover {
+      .icons-sprite {
+        transform: translateX(100%);
+      }
     }
 
     &:active {
-      background-color: rgba(255, 122, 80, 0.1);
-      box-shadow: none;
+      .icons-sprite {
+        transform: translateX(0);
+      }
     }
+  }
+}
+
+.comments {
+  padding: 60px 0;
+
+  .title {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  &__slider {
+    padding: 0 90px;
+  }
+
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+   &__img {
+    max-width: 300px;
+    width: 100%;
+    height: 300px;
+    border-radius: 50%;
+    @extend %img-position;
+  }
+
+  &__quote {
+    max-width: 630px;
+    padding: 0 30px;
+  }
+
+  &__text p {
+    position: relative;
+    @extend %rubik-italic; 
+    margin-bottom: 30px;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      width: 24px;
+      height:20px;
+    }
+
+    &::before {
+      top: -5px;
+      left: -35px;
+      background-image: url('../images/icons/icon-quotes.svg');
+    }
+
+    &::after {
+      bottom: -5px;
+      right: -35px;
+      background-image: url('../images/icons/icon-quotes.svg');
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__author {
+    color: $orange-900;
+    @extend %rubik-500;
+    margin-bottom: 15px;
+  }
+  
+  &__author-status {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .slick-dots {
+    display: flex;
+    justify-content: center;
+
+    li {
+      &:not(:last-child) {
+        margin-right: 15px;
+
+      }
+
+      button {
+        position: relative;
+        border-radius: 50%;
+        font-size: 0;
+        background-color: $gray;
+        width: 15px;
+        height: 15px;
+        border: 1px solid transparent;
+      }
+
+      &.slick-active {
+        button {
+          background-color: $orange-900;
+        }
+      }
+    }
+  }
+
+  .slick-next,
+  .slick-prev {
+    position: absolute;
+    width: 34px;
+    height:34px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    object-fit: cover;
+    bottom: -10px;
+    font-size: 0;
+    border-radius: 50%;
+    border: 3px solid $gray;
+  }
+
+  .slick-prev {
+    background-image: url('../images/icons/icon-vector.svg');
+    left: calc(50% - 100px);
+  }
+
+  .slick-next {
+    background-image: url('../images/icons/icon-vector.svg');
+    right: calc(50% - 100px);
+    transform: rotateY(180deg);
   }
 }
 
@@ -583,20 +787,35 @@
     height: 39px;
     border-radius: 50%;
 
+    .icons-sprite {
+        fill: #000;
+        stroke: none;
+      }
+
+    &:focus {
+
+      .icons-sprite {
+        fill: #000;
+        stroke: none;
+      }
+    }
+
     &:hover {
-     .icons-sprite {
+      background-color: #FF7A50;
+
+      .icons-sprite {
         fill: #fff;
+        stroke: none;
       }
     }
 
     &:active {
-     .icons-sprite {
-      fill: #000;
-    }
+      background-color: #FFF2ED;
+
+      .icons-sprite {
+        fill: $orange-900;
+        stroke: none;
+      }
     }
   }
-
-  .icons-sprite {
-      fill: #000;
-    }
 }
