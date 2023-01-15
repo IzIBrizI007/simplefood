@@ -8,7 +8,7 @@ body {
   display: flex;
   flex-direction: column;
   color: $dark;
-  background-color: #f9faff;
+  background-color: $silver-100;
   font-size: 20px;
   font-weight: 400;
   line-height: 1.5;
@@ -18,22 +18,30 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px 120px;
+  padding: 0 15px;
 }
 
 main {
   flex-grow: 1;
 }
 
+.main-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 a {
   color: $dark;
   font-size: 18px;
   line-height: 1.16;
-  outline: transparent;
-}
-
-button {
-  cursor: pointer;
 }
 
 .title {
@@ -46,25 +54,6 @@ button {
 path,
 ellipse {
   transition: fill 0.2s, stroke 0.2s;
-}
-
-
-.logo {
-  border-radius: 5px;
-  transition: box-shadow 0.2s, opacity 0.2s;
-
-  &:focus {
-    box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:active {
-    opacity: 0.5;
-    box-shadow: none;
-  }
 }
 
 .sr-only {
@@ -85,64 +74,84 @@ ellipse {
   transition: box-shadow 0.2s, text-shadow 0.2s, color 0.2s, text-decoration 0.2s;
 
   &:focus {
-    box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+    box-shadow: 0 0 0 2px rgba($orange-900, 0.7);
+    text-decoration: none;
   }
 
   &:hover {
     color: $orange-900;
+    text-decoration: none;
   }
 
   &:active {
     color: $dark;
-    text-shadow: 2px 2px 5px rgba(49, 53, 43, 0.5);
+    text-shadow: 2px 2px 5px rgba($dark, 0.5);
     box-shadow: none;
   }
+}
+
+.icons-sprite  {
+  transition: fill 0.2s, stroke 0.2s;
+  fill: none;
+  stroke: $dark;
+  width: 22px;
+  height: 22px;
 }
 
 .animation-btn {
+  background-color: $orange-900;
+  color: #fff;
   border-radius: 5px;
-  transition: box-shadow 0.2s, background 0.2s, stroke 0.2s, fill 0.2s, color 0.2s;
+  transition: box-shadow 0.2s, background-color 0.2s, stroke 0.2s, fill 0.2s, color 0.2s;
 
   &:focus {
-    box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
-    background: rgba(255, 122, 80, 0.1);
+    box-shadow: 0 0 0 2px rgba($orange-900, 0.7);
+    background-color: $btn-bg-opacity;
     color: $orange-900;
-  }
 
-  &:hover {
-    background-color: $orange-900;
-  }
-
-  &:active {
-    background: rgba(255, 122, 80, 0.1);
-    box-shadow: none;
-  }
-}
-
-.animation-accent {
-  border-radius: 5px;
-  transition: box-shadow 0.2s, background 0.2s, stroke 0.2s, fill 0.2s, color 0.2s;
-
-  &:focus {
-    box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
-    background: rgba(255, 122, 80, 0.1);
-    color: $orange-900;
+    .icons-sprite {
+      fill: $orange-900;
+    }
   }
 
   &:hover {
     box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
     background-color: #fff;
     color: $orange-900;
+    
+    .icons-sprite {
+      fill: $orange-900;
+    }
   }
 
   &:active {
-    background: rgba(255, 122, 80, 0.1);
+    background-color: rgba(255, 122, 80, 0.1);
     box-shadow: none;
+
+    .icons-sprite {
+      fill: $orange-900;
+    }
   }
 }
 
-.categories__option:hover {
-   box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
-}
+// .animation-accent {
+//   border-radius: 5px;
+//   transition: box-shadow 0.2s, background 0.2s, stroke 0.2s, fill 0.2s, color 0.2s;
 
+//   &:focus {
+//     box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+//     background: rgba(255, 122, 80, 0.1);
+//     color: $orange-900;
+//   }
 
+//   &:hover {
+//     box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+//     background-color: #fff;
+//     color: $orange-900;
+//   }
+
+//   &:active {
+//     background: rgba(255, 122, 80, 0.1);
+//     box-shadow: none;
+//   }
+// }
