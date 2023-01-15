@@ -4,8 +4,8 @@ $(function () {
     autoplay: true,
     autoplaySpeed: 5000,
     fade: true,
-    prevArrow: '<button type="button" class="slider__arrow slider__arrow--prev"><span class="lnr lnr-chevron-left"></span></button>',
-    nextArrow: '<button type="button" class="slider__arrow slider__arrow--next"><span class="lnr lnr-chevron-right"></span></button>',
+    prevArrow: '<button type="button" class="slider__arrow slider__arrow--prev"><span class="lnr lnr-chevron-left"> <span class="sr-only">Предидущий слайд</span></span></button>',
+    nextArrow: '<button type="button" class="slider__arrow slider__arrow--next"><span class="lnr lnr-chevron-right"></span>  <span class="sr-only">Следующий слайд</span></button>',
     appendArrows: '.arrows-wrap'
   });
 
