@@ -4,14 +4,12 @@ $(function () {
     autoplay: true,
     autoplaySpeed: 5000,
     fade: true,
-    prevArrow: '<button type="button" class="slider__arrow slider__arrow--prev"><span class="lnr lnr-chevron-left"> <span class="sr-only">Предидущий слайд</span></span></button>',
-    nextArrow: '<button type="button" class="slider__arrow slider__arrow--next"><span class="lnr lnr-chevron-right"></span>  <span class="sr-only">Следующий слайд</span></button>',
+    prevArrow: '<button type="button" class="slider__arrow slider__arrow--prev"><span class="sr-only">Предидущий слайд</span><svg class="icons-sprite"><use xlink:href="images/sprite.svg#icon-vector"></use></svg></button>',
+    nextArrow: '<button type="button" class="slider__arrow slider__arrow--next"><span class="sr-only">Следующий слайд</span><svg class="icons-sprite"><use xlink:href="images/sprite.svg#icon-vector"></use></svg></button>',
     appendArrows: '.arrows-wrap'
   });
 
-});
-
-function svgSprites() {
+  function svgSprites() {
   return src('app/images/icons/*.svg') 
   .pipe(cheerio({
         run: ($) => {
@@ -34,6 +32,10 @@ function svgSprites() {
 	    )
 	.pipe(dest('app/images')); 
 }
+
+});
+
+
 
 var mixer = mixitup('.categories__choice');
 mixer.filter('.category-a');
