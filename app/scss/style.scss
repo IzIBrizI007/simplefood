@@ -1,12 +1,22 @@
 @import 'reset';
 @import 'fonts';
 @import 'vars';
-@import 'lib';
+@import 'libs';
+@import 'mixin.scss';
 @import 'logo';
 @import 'global';
 
 .hero {
   padding-bottom: 60px;
+
+  @include mq(tablet) {
+    position: relative;
+    padding: 20px 0;
+  }
+
+  @include mq(phone) {
+    padding: 25px 0 40px;
+  }
 
   &__inner {
     display: flex;
@@ -16,10 +26,19 @@
 
   &__left {
     max-width: 450px;
+
+    @include mq(tablet-2) {
+      max-width: 400px;
+    }
+
+    @include mq(tablet) {
+      max-width: 550px;
+    }
   }
 
   &__title {
     margin-bottom: 20px;
+    @include line-clamp(3);
     @extend %rubik-500;
     color: $orange-900;
     font-size: 66px;
@@ -29,21 +48,49 @@
     &--color {
       color: $darkBlue-900;
     }
+
+    @include mq(tablet-2) {
+      max-width: 350px;
+      font-size: 50px;
+    }
+
+    @include mq(phone) {
+      max-width: 257px;
+      font-size: 40px;
+    }
   }
 
   &__text p {
     margin-bottom: 20px;
+    @include line-clamp(6);
+
+    @include mq(phone) {
+      font-size: 16px;
+    }
   }
 
   &__btn {
     display: inline-block;
     padding: 12px 32px;
     margin-right: 34px;
+
+    @include mq(phone) {
+      padding: 8px 24px;
+      font-size: 14px;
+      letter-spacing: 0.03em;
+      display: inline-block;
+      margin-right: 25px;
+      letter-spacing: 0.03em;
+    }
   }
 
   &__link-info {
     text-decoration: underline;
     color: $darkBlue-900;
+
+    @include mq(phone) {
+      font-size: 16px;
+    } 
   }
 
   &__img {
@@ -51,6 +98,29 @@
     width: 100%;
     height: 660px;
     @extend %img-position;
+
+    @include mq(desktop) {
+      width: 500px; 
+      height: 580px;
+    }
+
+    @include mq(tablet-2) {
+      width: 350px; 
+      height: 400px;
+    }
+    @include mq(tablet) {
+      position: absolute;
+      display: block;
+      content: '';
+      bottom: 0;
+      right: 0;
+      background-position: top center;
+      background-size: 250px;
+      z-index: -1;
+      width: 254px; 
+      height: 300px;
+      opacity: 0.3;
+    }
   }
 }
 
@@ -60,6 +130,15 @@
   justify-content: space-between;
   padding: 60px 0;
 
+  @include mq(tablet) {
+    padding: 20px 0;
+    position: relative;
+  }
+
+  @include mq(phone) {
+    padding: 14px 0;
+  }
+
   &__inner {
     display: flex;
     align-items: center;
@@ -68,6 +147,10 @@
   &__list {
     display: flex;
     margin-right: 52px;
+
+    @include mq(tablet) {
+      display: none;
+    }
   }
 
   &__item {
@@ -142,9 +225,99 @@
   }
 }
 
+.burger {
+
+  @include mq(tablet) {
+    display: block;
+  }
+}
+
+.burger-nav {
+
+  @include mq(tablet) {
+    display: block;
+    position: absolute;
+    width: calc(100% + 15px);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateX(-300%);
+    transition: transform 0.5s;
+  }
+
+  &__inner {
+    @include mq(tablet) {
+      width: 86%;
+      background-color: #fff;
+      height: 100vh;
+    }     
+  }
+
+  &__box {
+     @include mq(tablet) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 26px 25px 0;
+    }     
+  }
+
+  .burger-list {
+    @include mq(tablet) {
+      display: block;
+      padding: 25px 0 25px;
+    }     
+    .nav__item {
+      @include mq(tablet) {
+        font-size: 18px;
+        line-height: 120%;
+
+        &--active {
+          transform: translateX(0);
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      } 
+    }
+  }
+
+  .address {
+    @include mq(tablet) {
+      padding: 15px 0;
+    }
+
+    a {
+      @include mq(tablet) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .burger__logo {
+    @include mq(tablet) {
+      display: block;
+      max-width: 259px;
+    }
+  }
+}
+
 .basket {
   display: flex;
   align-items: center;
+
+  @include mq(tablet) {
+    margin-right: 20px;
+  }
+
+  @include mq(phone) {
+    margin-right: 10px;
+  }
   
   &__icon {
     &:not(:last-child) {
@@ -160,6 +333,10 @@
     width: 44px;
     height: 44px;
     background-color: $silver-100;
+
+    @include mq(phone) {
+      height: 35px;
+    }
 
     &:focus {
 
@@ -211,6 +388,14 @@
     text-align: center;
     line-height: 1;
     transition: background 0.2s, color 0.2s;
+
+    @include mq(phone) {
+      padding: 3px 4px;
+      width: 14px;
+      height: 14px;
+      top: 3px;
+      left: 27px;
+    }
   }
 }
 
@@ -218,8 +403,17 @@
   padding: 60px 0;
   text-align: center;
 
+  @include mq(tablet) {
+    padding: 20px 0;
+  }
+
   &__title {
     margin-bottom: 50px;
+
+    @include mq(phone) {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
   }
 
   &__foods { 
@@ -227,18 +421,40 @@
     flex-wrap: wrap;
     margin-right: -30px;
     margin-bottom: 30px;
+
+    @include mq(desktop) {
+      justify-content: center;
+    }
+
+    @include mq(phone) {
+      margin-right: -5px;
+      margin-bottom: 20px;
+    }
   }
 
   &__list {
     display: flex;
     align-items: center;
     margin-bottom: 41px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    @include mq(phone) {
+      margin-bottom: 25px;
+    }
   }
 
   &__item {
     display: flex;
+    padding: 3px;
     &:not(:last-child) {
-      margin-right: 20px;
+      margin-right: 15px;
+    }
+
+    @include mq(phone) {
+      &:not(:last-child) {
+        margin-right: 3px;
+      }
     }
   }
 
@@ -254,12 +470,33 @@
     transition: box-shadow 0.2s, background 0.2s, color 0.2s;
     line-height: 1.3;
 
-     .icons-sprite {
-        width: 44px;
-        height: 44px;
-        fill: $dark;
-        stroke: none;
+    .icons-sprite {
+      width: 44px;
+      height: 44px;
+      fill: $dark;
+      stroke: none;
+    }
+
+    @include mq(tablet) {
+      padding: 13px 20px;
+      font-size: 16px;
+      
+      .icons-sprite {
+        width: 24px;
+        height: 24px;
+        margin-right: 5px;
       }
+    }
+
+    @include mq(phone) {
+      padding: 11px 16px;
+      font-size: 14px;
+
+      .icons-sprite {
+        width: 20px;
+        height: 20px;
+      }
+    }
 
     &:focus {
       background-color: #fff;
@@ -311,12 +548,26 @@
     margin-right: 30px;
     margin-bottom: 30px;
     border-radius: 5px;
+
+    @include mq(tablet-2) {
+      margin-right: 5px;
+      margin-bottom: 10px;
+      max-width: 40%;
+    }
+
+    @include mq(phone) {
+      max-width: 170px;
+    }
   }
 
   &__more {
     text-decoration-line: underline;
     color: $darkBlue-900;
     line-height: 1.5;
+
+    @include mq(phone) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -333,6 +584,14 @@
   border-radius: 5px;
   box-shadow: 0 0 0 1px #ECECEC;
   transition: box-shadow 0.2s;
+
+  @include mq(tablet-2) {
+    max-width: 100%;
+  }
+
+  @include mq(phone) {
+    max-width: 300px;
+  }
 
   &:hover {
     box-shadow: 0 0 0 1px #FF6838;
@@ -352,6 +611,11 @@
     font-size: 15px;
     line-height: 1.3;
     @extend %rubik-400;
+    @include line-clamp(2);
+
+    @include mq(phone) {
+      max-width: 150px;
+    }
   }
 
   &__num {
@@ -364,17 +628,37 @@
   &__btn {
     padding: 7px 16px;
     font-size: 14px;
+
+    @include mq(phone) {
+      line-height: 1.3;
+    }
   }
 }
 
 .about {
   padding: 60px 0;
 
+  @include mq(tablet) {
+    padding: 20px 0;
+  }
+
+  &__title {
+    @include mq(phone) {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+  }
+
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 70px;
+
+    @include mq(tablet-2) {
+      padding: 25px 0;
+      position: relative;
+    }
   }
 
   &__bg {
@@ -383,6 +667,23 @@
     height: 585px;
     @extend %img-position;
     margin-right: 20px;
+
+    @include mq(tablet-2) {
+      position: absolute;
+      display: block;
+      content: "";
+      background-size: contain;
+      top: 0;
+      right: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      opacity: 0.6;
+    }
+
+    @include mq(phone) {
+     opacity: 0.3;
+    }
   }
 
   &__info {
@@ -391,15 +692,19 @@
 
   &__list {
     margin-bottom: 30px;
+
+    @include mq(phone) {
+      margin-bottom: 20px;
+    }
   }
 
   &__item {
-
     position: relative;
     display: block;
     padding-left: 65px;
     font-size: 24px;
-
+    @include line-clamp(2);
+    
      &::before {
       position: absolute;
       content: '';
@@ -413,6 +718,18 @@
 
     &:not(:last-child) {
       margin-bottom: 20px;
+    }
+
+    @include mq(tablet-2) {
+      height: 34px;
+    }
+
+    @include mq(phone) {
+      padding-left: 45px;
+
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
     }
   }
 
@@ -434,25 +751,66 @@
 
   &__text p{
     margin-bottom: 30px;
+    @include line-clamp(5);
+
+    @include mq(phone) {
+    font-size: 16px;
+  }
   }
 
   &__link {
     display: inline-block;
     padding: 12px 32px;
+    line-height: 1.3;
+  }
+
+  &__point {
+    @include mq(phone) {
+      font-size: 18px;
+    }
   }
 }
 
 .restorans {
   padding: 60px 0;
+
+  @include mq(tablet-2) {
+    padding: 15px 0 20px;
+  }
+
+  @include mq(phone) {
+    padding: 20px 0;
+  }
+  
   .title {
     text-align: center;
     margin-bottom: 45px;
+
+    @include mq(tablet-2) {
+      margin-bottom: 30px;
+    }
+
+    @include mq(phone) {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
   }
 
   &__list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
+
+    @include mq (tablet-2) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 5px;
+    }
+
+    @include mq (phone) {
+      display: flex;
+      flex-direction: column;
+      grid-gap: 0;
+    }
   }
 }
 
@@ -460,6 +818,14 @@
   max-width: 370px;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+
+  @include mq(tablet-2) {
+    margin: 0 auto;
+  }
+
+  @include mq(phone) {
+    margin: 0 auto 15px;
+  }
 
   &:hover {
     box-shadow: 0 3px 15px rgba(255, 104, 56, 0.5);
@@ -491,9 +857,15 @@
   }
 
   &__name {
+    max-width: 300px;
     font-size: 24px;
     line-height: 1.3;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    @include line-clamp(1);
+
+    @include mq(phone) {
+      margin-bottom: 15px;
+    }
   }
 
   &__time,
@@ -551,9 +923,18 @@
 .comments {
   padding: 60px 0 63px;
 
+  @include mq(tablet) {
+    padding: 20px 0;
+  }
+
   .title {
     text-align: center;
     margin-bottom: 45px;
+
+    @include mq(phone) {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
   }
 
   &__box {
@@ -562,6 +943,12 @@
     justify-content: space-between;
     padding: 0 90px;
     margin-bottom: 45px;
+
+    @include mq(tablet-2) {
+      padding: 0 6px;
+      flex-direction: column;
+      margin-bottom: 0;
+    }
   }
 
    &__img {
@@ -570,15 +957,63 @@
     height: 300px;
     border-radius: 50%;
     @extend %img-position;
+
+    @include mq(tablet-2) {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 40px;
+    }
+
+    @include mq(tablet) {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 30px;
+    }
   }
 
   &__quote {
     max-width: 630px;
     padding: 0 30px;
+
+    @include mq(desktop) {
+      max-width: 500px;
+    }
+
+    @include mq(tablet-2) {
+      max-width: 100%;
+    }
   }
 
   &__text {
     margin-bottom: 30px;
+    @include line-clamp(10);
+
+    @include mq(tablet-2) {
+      max-width: 630px;
+      margin-bottom: 30px;
+    }
+
+    @include mq(tablet) {
+      max-width: 265px;
+      margin-bottom: 20px;
+      font-size: 14px;
+
+      p {
+        &::before {
+          top: -5px;
+          left: -35px;
+        }
+
+        &::after {
+          bottom: 7px;
+          right: -35px;
+        }
+      }
+    }
+
+    @include mq(phone) {
+      margin-bottom: 15px;
+    }
 
     p {
       position: relative;
@@ -607,20 +1042,30 @@
     }
   }
 
-  &__author {
-    display: inline-block;
-    margin-bottom: 15px;
-  }
-
   &__name {
-    @extend %rubik-500;
+    display: inline-block;
+    max-width: 350px;
     font-style: normal;
     color: $orange-900;
+    @extend %rubik-500;
+    @include line-clamp(1);
+  }
+
+  &__author {
+    display: block;
+    margin-bottom: 5px;
+
+    @include mq(phone) {
+      font-size: 16px;
+    }
   }
   
   &__author-status {
     font-size: 14px;
     line-height: 1.3;
+    max-width: 350px;
+    @include line-clamp(1);
+    display: block;
   }
 
   &__arrow {
@@ -639,7 +1084,6 @@
       position: absolute;
       content: '';
       top: 50%;
-      
       transform: translate(-50%, -50%);
       width: 20px;
       height: 20px;
@@ -682,6 +1126,19 @@
     &--next {
       right: calc(50% - 110px);
       transform: rotateY(180deg);
+    }
+
+    @include mq(tablet) {
+      z-index: 1;
+      top: 37px;
+
+      &--next {
+        right: calc(50% - 135px);
+      }
+
+      &--prev {
+        left: calc(50% - 135px);
+      }
     }
   }
 }
@@ -738,10 +1195,24 @@
 .application {
   padding: 60px 0;
 
+  @include mq(tablet) {
+    padding: 20px 0;
+  }
+
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include mq(tablet-2) {
+      position: relative;
+      height: 380px;
+      align-items: center;
+    }
+
+    @include mq(phone) {
+      height: auto;
+    }
   }
 
   &__info {
@@ -750,10 +1221,21 @@
 
   .title {
     margin-bottom: 45px;
+
+    @include mq(phone) {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
   }
 
   &__text {
     margin-bottom: 30px;
+    @include line-clamp(8);
+
+    @include mq(phone) {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
   }
 
   &__box {
@@ -794,26 +1276,75 @@
     width: 100%;
     height: 380px;
     @extend %img-position;
-  }
 
+    @include mq(tablet-2) {
+      position: absolute;
+      display: block;
+      content: "";
+      background-size: contain;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+      width: 100%;
+      height: 80%;
+      opacity: .3;
+    } 
+
+    @include mq(phone) {
+      display: none;
+    } 
+  }
 }
 
 .footer {
   padding-top: 60px; 
 
+  @include mq(tablet-2) {
+    padding-bottom: 0;
+  }
+
+  @include mq(tablet) {
+    padding: 20px 0;
+  }
+
+  @include mq(tablet) {
+    padding-bottom: 0;
+  }
+
   &__top {
     display: flex;
     padding-bottom: 60px;
+
+    @include mq(tablet-2) {
+      flex-wrap: wrap;
+      padding: 0;
+    }
+
+    @include mq(phone) {
+      flex-direction: column;
+      padding: 0;
+      margin-bottom: 22px;
+    }
   }
 
   &__form-inner {
     display: flex;
     flex-direction: column;
     margin-right: 70px;
+
+    @include mq(tablet-2) {
+      margin-bottom: 30px;
+      order: 1;
+    }
   }
 
   .logo {
     margin-bottom: 30px;
+
+    @include mq(tablet-2) {
+      width: 200px;
+      height: 39px;
+    }
   }
 
   &__list {
@@ -822,17 +1353,36 @@
     &:not(:last-child) {
       margin-right: 70px;
     }
+
+    @include mq(tablet-2) {
+      order: 3;
+      margin-bottom: 20px;
+    }
   }
   
   &__item {
     letter-spacing: 0.01em;
+    @include line-clamp(1);
+    max-width: 200px;
+
     &:not(:last-child) {
       margin-bottom: 13px;
+    }
+
+    @include mq(tablet-2) {
+      line-height: 1.3;
+      &:not(:last-child) {
+        margin-bottom: 20px
+      }
     }
   }
 
   &__link {
     line-height: 1.3;
+
+    @include mq(tablet-2) {
+      font-size: 18px; 
+    }
   }
 
   &__bottom {
@@ -858,6 +1408,7 @@
     border: 1px solid #C2C2C2;
     border-radius: 5px;
     font-size: 14px;
+    line-height: 1.3;
 
     &::placeholder {
       color: $gray;
@@ -873,6 +1424,10 @@
       &::placeholder {
         color: $darkBlue-900;
       }
+    }
+
+    @include mq(phone) {
+      margin-bottom: 6px;
     }
   }
 
@@ -921,6 +1476,17 @@
 
 .address {
   font-size: 16px;
+  max-width: 200px;
+
+  @include mq(tablet-2) {
+    order: 2;
+    margin-bottom: 30px;
+    margin-right: 70px;
+  }
+
+  @include mq(phone) {
+    margin-right: 0;
+  }
 
   &__list {
     margin-bottom: 15px;
@@ -931,7 +1497,7 @@
     font-style: normal;
 
     &:not(:last-child) {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     &::before {
@@ -1022,700 +1588,6 @@
       .icons-sprite {
         fill: $orange-900;
         stroke: none;
-      }
-    }
-  }
-}
-
-@media (max-width: 1220px) {
-
-  .hero {
-
-    &__img {
-      width: 500px; 
-      height: 580px;
-    }
-  }
-
-  .choice {
-
-    &__foods {
-      justify-content: center;
-    }
-  }
-
-  .comments {
-    &__quote {
-      max-width: 500px;
-    }
-  }
-}
-
-@media (max-width: 992px) {
-
-  body {
-    font-size: 18px;
-  }
-
-  .title {
-    font-size: 30px;
-  }
-
-  .nav {
-    &__list {
-     margin-right: 40px;
-    }
-  }
-
-  .hero {
-
-    &__left {
-       max-width: 400px;
-    }
-
-    &__title {
-      max-width: 350px;
-      font-size: 50px;
-    }
-
-    &__img {
-      width: 350px; 
-      height: 400px;
-    }
-  }
-
-  .choice {
-
-    &__foods {
-      justify-content: center;
-    }
-  
-    &__option {
-      margin-right: 5px;
-      margin-bottom: 10px;
-      max-width: 40%;
-    }
-  }
-
-  .about {
-
-    &__inner {
-      padding: 25px 0;
-      position: relative;
-    }
-
-    &__item {
-      height: 34px;
-    }
-
-    &__bg {
-      position: absolute;
-      display: block;
-      content: "";
-      background-size: contain;
-      top: 0;
-      right: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      opacity: 0.6;
-    }
-  }
-
-  .product-card {
-    max-width: 100%;
-  }
-
-  .restorans {
-    padding: 15px 0 20px;
-
-    .title {
-      margin-bottom: 30px;
-    }
-
-    .text {
-      display: flex;
-      justify-content: center;
-    }
-
-    &__list {
-     grid-template-columns: repeat(2, 1fr);
-     grid-gap: 5px;
-    }
-  }
-
-  .card-rest {
-    margin: 0 auto;
-  }
-
-  .comments {
-
-    &__box {
-      padding: 0 6px;
-      flex-direction: column;
-      margin-bottom: 0;
-    }
-
-    &__img {
-      width: 200px;
-      height: 200px;
-      margin-bottom: 40px;
-    }
-
-    &__text {
-      max-width: 630px;
-      margin-bottom: 30px;
-    }
-
-    &__quote {
-      max-width: 100%;
-    }
-
-    &__author {
-      margin-bottom: 10px;
-    }
-  }
-
-  .application {
-    
-    &__inner {
-      position: relative;
-      height: 380px;
-      align-items: center;
-    }
-
-    &__img {
-      position: absolute;
-      display: block;
-      content: "";
-      background-size: contain;
-      bottom: 0;
-      right: 0;
-      z-index: -1;
-      width: 100%;
-      height: 80%;
-      opacity: .3;
-    }
-  }
-
-  .footer {
-    padding-bottom: 0;
-    
-    &__top {
-      flex-wrap: wrap;
-      padding: 0;
-    }
-    .logo {
-      max-width: 200px;
-    }
-
-    &__form-inner {
-      margin-bottom: 30px;
-      order: 1;
-    }
-
-    &__list {
-      order: 3;
-        margin-bottom: 20px;
-    }
-
-    &__item {
-      line-height: 1.3;
-      &:not(:last-child) {
-        margin-bottom: 20px
-      }
-    }
-
-    &__link {
-      font-size: 18px;
-    }
-  }
-
-  .address {
-    order: 2;
-    margin-bottom: 30px;
-    margin-right: 70px;
-  }
-}
-
-@media (max-width: 768px) {
-  
-  .comments,
-  .about,
-  .hero,
-  .application,
-  .choice,
-  .footer {
-    padding: 20px 0;
-  }
-
-  .hero {
-    position: relative;
-
-    &__left {
-       max-width: 550px;
-    }
-
-    &__title {
-      max-width: 350px;
-      font-size: 50px;
-    }
-
-    &__img {
-      position: absolute;
-      display: block;
-      content: '';
-      bottom: 0;
-      right: 0;
-      background-position: top center;
-      background-size: 250px;
-      z-index: -1;
-      width: 254px; 
-      height: 300px;
-      opacity: 0.3;
-    }
-  }
-
-  .nav {
-    padding: 20px 0;
-    position: relative;
-    &__list {
-      display: none;
-    }
-
-    
-  }
-
-  .burger-nav {
-    display: block;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    height: 100vh;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    transform: translateX(-300%);
-    transition: transform 0.5s;
-
-    &__inner {
-      width: 86%;
-      background-color: #fff;
-      height: 100vh;   
-    }
-    
-    &__box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 26px 25px 0;
-    }
-
-    .burger-list {
-      display: block;
-      padding: 25px 0 25px;
-      .nav__item {
-        font-size: 18px;
-        line-height: 120%;
-
-          &:not(:last-child) {
-          margin-bottom: 20px;
-        }
-      }
-    }
-
-    .address {
-      padding: 15px 0;
-
-      a {
-        font-size: 16px;
-      }
-    }
-
-    .burger__logo {
-      display: block;
-      max-width: 259px;
-    }
-  }
-
-  .burger-nav--active {
-      transform: translateX(0);
-    }
-
-  .burger {
-    display: block;
-  }
-
-  .basket {
-    margin-right: 20px;
-  }
-
-  .choice {
-
-     &__btn {
-      padding: 15px 20px;
-      font-size: 16px;
-
-      .icons-sprite {
-        width: 24px;
-        height: 24px;
-        margin-right: 5px;
-      }
-    }
-    
-    &__list {
-      overflow-x: auto;
-      scroll-snap-type: x;
-    }
-
-    &__option {
-      margin-right: 5px;
-      margin-bottom: 10px;
-      max-width: 40%;
-    }
-  }
-
-  .product-card {
-    max-width: 100%;
-  }
-
-  .comments {
-
-    &__box {
-      padding: 0 6px;
-      flex-direction: column;
-      margin-bottom: 0;
-    }
-
-    &__img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 30px;
-    }
-
-    &__text {
-      max-width: 265px;
-      margin-bottom: 20px;
-      font-size: 14px;
-
-      p {
-        &::before {
-          top: -5px;
-          left: -35px;
-        }
-
-        &::after {
-          bottom: 7px;
-          right: -35px;
-          background-image: url('../images/icons/icon-quotes.svg');
-          transform: rotateY(180deg);
-        }
-      }
-    }
-
-    &__author {
-      margin-bottom: 10px;
-    }
-  }
-}
-
-@media (max-width: 576px) {
-
-  a {
-    font-size: 14px;
-  }
-
-  .nav {
-    padding: 14px 0;
-  }
-
-  .hero {
-    padding: 25px 0 40px;
-
-    &__left {
-      max-width: 550px;
-    }
-
-    &__title {
-      max-width: 257px;
-      font-size: 40px;
-    }
-
-    &__text {
-      font-size: 16px;
-    }
-
-    &__btn {
-      padding: 8px 24px;
-      font-size: 14px;
-      letter-spacing: 0.03em;
-      display: inline-block;
-      margin-right: 25px;
-      letter-spacing: 0.03em;
-    }
-
-    &__link-info {
-      font-size: 16px;
-    }
-  }
-
-  .basket {
-    margin-right: 10px;
-
-    &__icon:not(:last-child) {
-      margin-right: 10px;
-    } 
-
-    &__btn {
-      height: 35px;
-    }
-
-    &__num {
-      padding: 3px 4px;
-      width: 14px;
-      height: 14px;
-      top: 3px;
-      left: 27px;
-    }
-  }
-
-  .logo {
-    max-width: 115px;
-  }
-
-  .about,
-  .choice,
-  .comments,
-  .restorans,
-  .application {
-    .title {
-      font-size: 24px;
-      margin-bottom: 30px;
-    }
-  }
-  
-
-  .choice {
-
-    &__list {
-      margin-bottom: 32px;
-    }
-
-    &__item:not(:last-child) {
-      margin-right: 10px;
-    }
-
-    &__btn {
-      padding: 11px 16px;
-      font-size: 14px;
-
-      .icons-sprite {
-        width: 20px;
-        height: 20px;
-        margin-right: 5px;
-      }
-    }
-
-    &__foods {
-      margin-right: -5px;
-      margin-bottom: 20px;
-    }
-
-    &__option {
-      margin-right: 5px;
-      margin-bottom: 10px;
-      max-width: 170px;
-    }
-
-    &__more {
-      font-size: 20px;
-    }
-  }
-
-  .product-card {
-    max-width: 300px;
-
-    &__text {
-      max-width: 150px;
-    }
-
-    &__btn {
-      line-height: 1.3;
-    }
-  }
-
-  .about {
-
-    &__text {
-      font-size: 16px;
-    }
-
-    &__bg {
-      opacity: 0.3;
-    }
-
-    &__list {
-      margin-bottom: 20px;
-    }
-
-    &__item:not(:last-child) {
-      margin-bottom: 15px;
-    }
-
-    &__point {
-      padding-left: 45px;
-      font-size: 18px;
-    }
-
-    &__link {
-      line-height: 1.3;
-    }
-  }
-
-  .restorans {
-    padding: 20px 0;
-
-    .title {
-      margin-bottom: 30px;
-    }
-
-    &__list {
-      display: flex;
-      flex-direction: column;
-      grid-gap: 0;
-    }
-  }
-
-  .card-rest {
-    margin: 0 auto 15px;
-  }
-
-  .comments {
-
-    &__box {
-      padding: 0 6px;
-      flex-direction: column;
-      margin-bottom: 0;
-    }
-
-    &__img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 30px;
-    }
-
-    &__text {
-      max-width: 265px;
-      margin-bottom: 15px;
-      font-size: 14px;
-
-      p {
-        &::before {
-          top: -5px;
-          left: -35px;
-        }
-
-        &::after {
-          bottom: 7px;
-          right: -35px;
-          background-image: url('../images/icons/icon-quotes.svg');
-          transform: rotateY(180deg);
-        }
-      }
-    }
-
-    &__author {
-      margin-bottom: 10px;
-      font-size: 16px;
-      line-height: 1.3;
-    }
-
-    &__arrow {
-      z-index: 1;
-      top: 37px;
-
-      &--next {
-        right: calc(50% - 135px);
-      }
-
-      &--prev {
-        left: calc(50% - 135px);
-      }
-    }
-  }
-
-  .application {
-
-    &__inner {
-      position: relative;
-      height: auto;
-      align-items: center;
-    }
-
-    .title {
-      margin-bottom: 15px;
-    }
-
-    &__img {
-      display: none;
-    }
-
-    &__text {
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-  }
-
-  .footer {
-    padding-bottom: 0;
-    
-    &__top {
-      flex-direction: column;
-      padding: 0;
-      margin-bottom: 22px;
-    }
-    .logo {
-      max-width: 200px;
-    }
-
-    &__form-inner {
-      margin-bottom: 25px;
-      order: 1;
-    }
-
-    &__list {
-      order: 3;
-        margin-bottom: 20px;
-    }
-
-    &__item {
-      line-height: 1.3;
-      &:not(:last-child) {
-        margin-bottom: 20px
-      }
-    }
-
-    &__link {
-      font-size: 18px;
-    }
-  }
-
-  .subscribe {
-    &__input {
-      line-height: 1.3;
-    }
-  }
-
-  .address {
-    order: 2;
-    margin-right: 0;
-    margin-bottom: 30px;
-
-    &__item {
-      &:not(:last-child) {
-        margin-bottom: 15px;
       }
     }
   }

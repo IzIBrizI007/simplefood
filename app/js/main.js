@@ -25,8 +25,8 @@ $(function () {
     else {
       $('.comments__slider').slick({
         dots: false,
-        autoplay: true,
-        autoplaySpeed: 2000,
+        // autoplay: true,
+        // autoplaySpeed: 2000,
         // fade: true,
         infinite: false,
         prevArrow: '<button type="button" class="comments__arrow comments__arrow--prev"><span class="sr-only">Предидущий слайд</span><svg class="icons-sprite"><use xlink:href="images/sprite.svg#icon-vector"></use></svg></button>',

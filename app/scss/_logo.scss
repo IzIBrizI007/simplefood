@@ -3,7 +3,7 @@
   transition: box-shadow 0.2s, opacity 0.2s;
   
   img {
-    object-fit: contain;
+    object-fit: cover;
   }
 
   path {
@@ -24,8 +24,11 @@
     opacity: 0.5;
     box-shadow: none;
   }
-}
 
-.logo__burger {
-  display: none;
+  @include mq(phone) {
+    img {
+      width: 115px;
+      height: 23px;
+    }
+  }
 }
