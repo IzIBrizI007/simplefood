@@ -3,10 +3,12 @@ $darkBlue-900: #363853;
 $orange-900: #FF6838;
 $orange-800: #FF7A50;
 $orange-500: #FFAE94;
+$orange-100: #FAEDED;
 $btn-bg-opacity: #ff7a501a;
 $gray: #c2c2c2;
 $silver-200: #ececec;  
 $silver-100: #f9faff;
+$breadcrumbs: #505050;
 
 %rubik-400 {
   font-family: 'Rubik', sans-serif;
@@ -32,4 +34,12 @@ $silver-100: #f9faff;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+}
+
+%checkbox-hidden {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  position: absolute;
 }

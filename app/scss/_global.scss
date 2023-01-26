@@ -17,6 +17,10 @@ body {
   @include mq(tablet-2) {
     font-size: 18px;
   }
+
+  @include mq(tablet) {
+    position: relative;
+  }
 }
 
 .container {
@@ -66,6 +70,7 @@ ellipse {
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+    z-index: 1;
 }
 
 .animation-link {
@@ -138,5 +143,17 @@ ellipse {
  }
 
  .lock {
-    overflow-y: hidden;
+    overflow: hidden;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      height: 1000vh;
+      background-color: rgba(0,0,0, 0.5);
+    }
   }
