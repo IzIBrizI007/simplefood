@@ -44,8 +44,10 @@
     margin-bottom: 30px;
 
     @include mq(tablet-2) {
-      width: 200px;
-      height: 39px;
+      img {
+        width: 200px;
+        height: 39px;
+      }
     }
   }
 

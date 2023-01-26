@@ -145,6 +145,7 @@ ellipse {
  .lock {
     overflow: hidden;
     position: relative;
+    
     &::after {
       content: '';
       position: absolute;
@@ -152,6 +153,7 @@ ellipse {
       right: 0;
       top: 0;
       bottom: 0;
+      height: 1000vh;
       background-color: rgba(0,0,0, 0.5);
     }
   }

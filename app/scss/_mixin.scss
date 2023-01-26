@@ -2,7 +2,7 @@
 $breakpoints: (
   "phone": 560px,
   "tablet": 768px,
-  "tablet-2": 992px,
+  "tablet-2": 995px,
   "desktop": 1220px
 );
 @mixin mq($width, $type: max) {
@@ -30,4 +30,3 @@ $breakpoints: (
     -webkit-box-orient: vertical;
   }
 }
-

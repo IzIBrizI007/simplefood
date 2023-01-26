@@ -33,6 +33,10 @@
       grid-gap: 5px;
     }
 
+    @include mq (tablet) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
     @include mq (phone) {
       display: flex;
       flex-direction: column;
