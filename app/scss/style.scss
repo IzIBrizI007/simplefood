@@ -153,6 +153,7 @@
 
   &__filter {
     margin-right: 30px;
+    margin-bottom: 50px;
   }
 
   &__wrapper {
@@ -166,7 +167,7 @@
       margin: 0 auto;
       max-width:  650px;
     }
-    
+
     @include mq(phone) {
       max-width:  360px;
     }
