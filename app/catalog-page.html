@@ -16,7 +16,8 @@
 </head>
 
 <body>
-  <header class="header">
+
+    <header class="header">
     <div class="container">
       <nav class="nav">
         <a class="logo" href="#">
@@ -25,12 +26,12 @@
         <div class="nav__inner">
           <ul class="nav__list">
             <li class="nav__item">
-              <a class="nav__link animation-link" href="index.html">
+              <a class="nav__link nav__link--active animation-link" href="index.html">
                 Главная
               </a>
             </li>
             <li class="nav__item">
-              <a class="nav__link nav__link--active animation-link " href="#">
+              <a class="nav__link animation-link" href="catalog-page.html">
                 Блюда
               </a>
             </li>
@@ -77,12 +78,12 @@
             </div>
             <ul class="nav__list burger-list">
               <li class="nav__item">
-                <a class="nav__link animation-link" href="index.html">
+                <a class="nav__link nav__link--active animation-link" href="index.html">
                   Главная
                 </a>
               </li>
               <li class="nav__item">
-                <a class="nav__link animation-link nav__link--active" href="#">
+                <a class="nav__link animation-link" href="catalog-page.html">
                   Блюда
                 </a>
               </li>
@@ -143,7 +144,9 @@
     </div>
   </header>
 
-  <div class="breadcrumbs">
+    <main class="main">
+
+         <div class="breadcrumbs">
     <div class="container">
       <ul class="breadcrumbs__list">
         <li class="breadcrumbs__item">
@@ -156,8 +159,7 @@
     </div>
   </div>
 
-  <main class="main">
-    <section class="catalog">
+        <section class="catalog">
       <div class="container">
         <div class="catalog__top">
           <h2 class="title">Каталог продуктов</h2>
@@ -240,7 +242,8 @@
                   <li class="filter-proposition__item">
                     <label class="filter-proposition__label">
                       <input class="filter-proposition__input" type="checkbox" name="sale">
-                      <span class="filter-proposition__checkbox"></span>
+                      <span class="filter-proposition__checkbox">
+                      </span>
                       Со скидкой
                     </label>
                   </li>
@@ -486,36 +489,7 @@
       </div>
     </section>
 
-    <section class="application">
-      <div class="container">
-        <div class="application__inner">
-          <div class="application__info">
-            <h2 class="title">Скачайте мобильное приложение</h2>
-            <div class="application__text">
-              <p>
-                Рестораны, которые вы любите - в ваших руках. Устанавливайте приложение и заказывайте еду в любом
-                удобном месте.
-              </p>
-            </div>
-            <div class="application__box">
-              <a class="application__link application__link--apps" href="#"
-                style="background-image: url('images/app-store.png');">
-                <span class="sr-only">Скачать приложение через App Store</span>
-              </a>
-              <a class="application__link application__link--ggplay" href="#"
-                style="background-image: url('images/google-play.png');">
-                <span class="sr-only">Скачать приложение через Google Play</span>
-              </a>
-            </div>
-          </div>
-          <div class="application__img" style="background-image: url('images/application-img.jpg');">
-            <span class="sr-only">Картинка где телефон с включеным приложением для заказа еди</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="discount">
+        <section class="discount">
       <div class="container">
         <h2 class="title">Акции и скидки</h2>
         <ul class="discount__list">
@@ -610,9 +584,9 @@
       </div>
     </section>
 
-  </main>
+    </main>
 
-  <footer class="footer">
+    <footer class="footer">
     <div class="container">
       <div class="footer__top">
         <div class="footer__form-inner">
@@ -719,7 +693,7 @@
           <ul class="social-contact">
             <li class="social-contact__item">
               <a class="social-contact__link animation-btn" href="#" target="_blank">
-                <svg class="icons-sprite">
+                 <svg class="icons-sprite">
                   <use xlink:href="images/sprite.svg#icon-facebook"></use>
                 </svg>
                 <span class="sr-only">Мы в фейсбук</span>
@@ -735,7 +709,7 @@
             </li>
             <li class="social-contact__item">
               <a class="social-contact__link animation-btn" href="#" target="_blank">
-                <svg class="icons-sprite">
+                 <svg class="icons-sprite">
                   <use xlink:href="images/sprite.svg#icon-instagram"></use>
                 </svg>
                 <span class="sr-only">Обратиться к нам в инстаграм</span>
@@ -750,7 +724,7 @@
     </div>
   </footer>
 
-  <script src="js/main.min.js"></script>
+ <script src="js/main.min.js"></script>
 </body>
 
 </html>

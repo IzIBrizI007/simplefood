@@ -1,0 +1,61 @@
+.jq-selectbox__select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 47px;
+  padding: 0 35px 0 10px;
+  border: 1px solid $gray;
+  border-bottom-color: none;
+  border-radius: 3px;
+  background: transparent;
+  box-shadow: none;
+  color: $dark;
+  text-shadow: none;
+  font-size: 14px;
+  line-height: 1.2;
+
+  &:hover {
+    background: $orange-100;
+  }
+
+  &:active {
+    background: $silver-200;
+    box-shadow: none;
+  }
+}
+
+.jq-selectbox.focused .jq-selectbox__select {
+    border-color: $gray;
+  }
+
+.jq-selectbox__trigger {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  width: 34px;
+  height: 100%;
+  border-left: none;
+}
+
+.jq-selectbox__trigger-arrow {
+  position: absolute;
+  top: 12px;  
+  right: 12px;
+  width: 22px;
+  height: 6px;
+  border: none;
+  background-image: url('../images/sprite.svg#icon-vector-down');
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: invert(85%) sepia(1%) saturate(232%) hue-rotate(331deg) brightness(99%) contrast(76%); 
+}
+
+.jq-selectbox li.selected {
+    background-color: $orange-100;
+    color: $dark;
+}
+
+.jq-selectbox li:hover {
+  background-color: $orange-100;
+  color: $dark;
+}
