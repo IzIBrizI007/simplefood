@@ -1,6 +1,6 @@
 $(function () {
 
-  $('.select-styler').styler();
+  $('.select-styler, .product__input').styler();
 
 
   $('.burger').on('click', function(){
@@ -16,14 +16,41 @@ $('.burger-filter').on('click', function(){
   $('body').toggleClass('lock');
 });
 
+$('.description__link').on('click', function (e) {
+  e.preventDefault();
+  $('.description__link').removeClass('description__link--active');
+  $(this).addClass('description__link--active');
+
+  $('.description__content').removeClass('description__content--active');
+  $($(this).attr('href')).addClass('description__content--active');
+})
+
+$('.product__img-link').on('click', function (tabs) {
+  tabs.preventDefault();
+  $('body').addClass('lock');
+
+  $('.product__console-wrapper').addClass('product__console-wrapper--active');
+})
+
+$('.product__console-btn').on('click', function () {
+   $('body').removeClass('lock');
+  $('.product__console-wrapper').removeClass('product__console-wrapper--active');
+})
+
+// $('.nav__link').on('click',function () { 
+//   $('.nav__link').removeClass('nav__link--active');
+//   $(this).addClass('nav__link--active');
+// })
+
 $(document).mouseup( function(e){  
   var div = $('.burger'); 
-		if (!$('.burger-nav, .catalog__filter-box').is(e.target)
-		    && $('.burger-nav, .catalog__filter-box').has(e.target).length === 0 ) { 
+		if (!$('.product__console-wrapper, .burger-nav, .catalog__filter-box').is(e.target)
+		    && $('.product__console-wrapper, .burger-nav, .catalog__filter-box').has(e.target).length === 0 ) { 
       $('.burger').removeClass('burger__line--active');
       $('.burger-filter').removeClass('burger-filter--active');
 			$('.burger-nav').removeClass('burger-nav--active');
 			$('.catalog__filter-box').removeClass('catalog__filter-box--active');
+      $('.product__console-wrapper').removeClass('product__console-wrapper--active');
       $('body').removeClass('lock'); 
 		}
 });
@@ -33,7 +60,6 @@ $('.filter-category__btn').on('click', function(){
   $('.catalog__filter-box').removeClass('catalog__filter-box--active');
   $('body').removeClass('lock');
 });
-
 
     $(window).on('load resize', function() {
       if ($(window).width() < 769) {
@@ -48,8 +74,6 @@ $('.filter-category__btn').on('click', function(){
         $(".discount__list.slick-initialized").slick("unslick");
       }
     });
-
-
 
     $('.comments__slider:not(.slick-initialized)').slick({
       dots: true,
@@ -68,6 +92,66 @@ $('.filter-category__btn').on('click', function(){
             }
         }
       ]
+    });
+
+    $('.product__images:not(.slick-initialized)').slick({
+      fade: true,
+      prevArrow: '<button type="button" class="product__arrow product__arrow--prev"><span class="sr-only">Предидущий слайд</span><svg class="product__icons-sprite"><use xlink:href="images/sprite.svg#icon-vector"></use></svg></button>',
+      nextArrow: '<button type="button" class="product__arrow product__arrow--next"><span class="sr-only">Следующий слайд</span><svg class="product__icons-sprite"><use xlink:href="images/sprite.svg#icon-vector"></use></svg></button>',
+      appendArrows: '.product__images',
+       asNavFor: '.product__console',
+      responsive: [
+        {
+            breakpoint: 769,
+            settings: {
+              dots: false,
+              arrows: false
+            }
+        }
+      ]
+    });
+
+    $('.product__console:not(.slick-initialized)').slick({
+      fade: true,
+      dots: true,
+      prevArrow: '<button type="button" class="product__arrow product__arrow--prev"><span class="sr-only">Предидущий слайд</span><svg class="product__icons-sprite"><use xlink:href="images/sprite.svg#icon-vector"></use></svg></button>',
+      nextArrow: '<button type="button" class="product__arrow product__arrow--next"><span class="sr-only">Следующий слайд</span><svg class="product__icons-sprite"><use xlink:href="images/sprite.svg#icon-vector"></use></svg></button>',
+      appendArrows: '.product__console',
+      asNavFor: '.product__images',
+      responsive: [
+        {
+            breakpoint: 769,
+            settings: {
+              dots: false
+            }
+        }
+      ]
+    });
+
+    $(".product__star").rateYo({
+      starWidth: "16px",
+      fullStar: true,
+      spacing: "6px",
+      normalFill: "#C1C1C1",
+      readOnly: true,
+      ratedFill: "#FFB800"
+    });
+
+    $(".description__stars").rateYo({
+      starWidth: "16px",
+      fullStar: true,
+      spacing: "6px",
+      normalFill: "#C1C1C1",
+      readOnly: true,
+      ratedFill: "#FFB800"
+    });
+
+    $(".description__form-stars").rateYo({
+      starWidth: "16px",
+      fullStar: true,
+      spacing: "6px",
+      normalFill: "#C1C1C1",
+      ratedFill: "#FFB800",
     });
 });
 
@@ -133,3 +217,7 @@ $('.filter-category__btn').on('click', function(){
 
 var mixer = mixitup('.choice__foods, .catalog__list');
 mixer.filter('.category-a');
+
+// Fancybox.bind(document.getElementById("gallery-wrap"), "[data-fancybox]", {
+//   // Your custom options
+// });
